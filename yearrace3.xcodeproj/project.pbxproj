@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B83A107D258F0BB6007EE52F /* FirstPlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A107C258F0BB6007EE52F /* FirstPlayerButton.swift */; };
 		B88124C925887B4400FC59AF /* yearrace3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88124C825887B4400FC59AF /* yearrace3App.swift */; };
 		B88124CB25887B4400FC59AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88124CA25887B4400FC59AF /* ContentView.swift */; };
 		B88124CD25887B4700FC59AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88124CC25887B4700FC59AF /* Assets.xcassets */; };
 		B88124D025887B4700FC59AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88124CF25887B4700FC59AF /* Preview Assets.xcassets */; };
+		B8AD389F258AF69000F112C5 /* DateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD389E258AF69000F112C5 /* DateButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B83A107C258F0BB6007EE52F /* FirstPlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPlayerButton.swift; sourceTree = "<group>"; };
 		B88124C525887B4400FC59AF /* yearrace3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yearrace3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88124C825887B4400FC59AF /* yearrace3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yearrace3App.swift; sourceTree = "<group>"; };
 		B88124CA25887B4400FC59AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B88124CC25887B4700FC59AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B88124CF25887B4700FC59AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B88124D125887B4700FC59AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8AD389E258AF69000F112C5 /* DateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				B88124C825887B4400FC59AF /* yearrace3App.swift */,
 				B88124CA25887B4400FC59AF /* ContentView.swift */,
+				B8AD389E258AF69000F112C5 /* DateButton.swift */,
+				B83A107C258F0BB6007EE52F /* FirstPlayerButton.swift */,
 				B88124CC25887B4700FC59AF /* Assets.xcassets */,
 				B88124D125887B4700FC59AF /* Info.plist */,
 				B88124CE25887B4700FC59AF /* Preview Content */,
@@ -140,6 +146,8 @@
 			files = (
 				B88124CB25887B4400FC59AF /* ContentView.swift in Sources */,
 				B88124C925887B4400FC59AF /* yearrace3App.swift in Sources */,
+				B8AD389F258AF69000F112C5 /* DateButton.swift in Sources */,
+				B83A107D258F0BB6007EE52F /* FirstPlayerButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
