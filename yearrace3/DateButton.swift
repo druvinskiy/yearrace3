@@ -11,10 +11,12 @@ struct DateButton: View {
     var month = "Dec"
     var day = "31"
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(.black)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
                 .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100)
                 .offset(y: 25)
 
@@ -27,7 +29,7 @@ struct DateButton: View {
 
             Text(day)
                 .font(.title)
-                .foregroundColor(.white)
+                .foregroundColor(colorScheme == .dark ? .black : .white)
                 .fontWeight(.heavy)
                 .zIndex(1)
                 .offset(y: 20)

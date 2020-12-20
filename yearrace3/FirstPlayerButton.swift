@@ -10,16 +10,18 @@ import SwiftUI
 struct FirstPlayerButton: View {
     var response = "Yes"
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(.black)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
                 .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
                 .offset(y: 25)
 
             Text(response)
                 .font(.title)
-                .foregroundColor(.white)
+                .foregroundColor(colorScheme == .dark ? .black : .white)
                 .fontWeight(.heavy)
                 .zIndex(1)
 
