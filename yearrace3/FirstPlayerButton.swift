@@ -13,25 +13,43 @@ struct FirstPlayerButton: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .foregroundColor(colorScheme == .dark ? .white : .black)
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-                .offset(y: 25)
-
-            Text(response)
-                .font(.title)
-                .foregroundColor(colorScheme == .dark ? .black : .white)
-                .fontWeight(.heavy)
-                .zIndex(1)
-
-
+        VStack(spacing: 0) {
             Rectangle()
                 .foregroundColor(Color(#colorLiteral(red: 0.7215686275, green: 0, blue: 0, alpha: 1)))
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 50)
-                .offset(y: -25)
+                .frame(width: 100, height: 40)
+                
+            Rectangle()
+                .fill(colorScheme == .dark ? Color.white : Color.black)
+                .frame(width: 100, height: 60)
         }
         .cornerRadius(5)
+        .overlay(
+            Text(response)
+                .font(.title)
+                .fontWeight(.heavy)
+                .foregroundColor(colorScheme == .dark ? .black : .white)
+                .offset(y: 10.0)
+        )
+        
+//        ZStack {
+//            Rectangle()
+//                .foregroundColor(colorScheme == .dark ? .white : .black)
+//                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+//                .offset(y: 25)
+//
+//            Text(response)
+//                .font(.title)
+//                .foregroundColor(colorScheme == .dark ? .black : .white)
+//                .fontWeight(.heavy)
+//                .zIndex(1)
+//
+//
+//            Rectangle()
+//                .foregroundColor(Color(#colorLiteral(red: 0.7215686275, green: 0, blue: 0, alpha: 1)))
+//                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 50)
+//                .offset(y: -25)
+//        }
+//        .cornerRadius(5)
     }
 }
 
