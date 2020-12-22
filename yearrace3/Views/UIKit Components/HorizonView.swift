@@ -81,6 +81,8 @@ struct MonthLabel: CalendarItemViewRepresentable {
     static func makeView(withInvariantViewProperties invariantViewProperties: InvariantViewProperties) -> UIStackView {
         let stackView = UIStackView()
         stackView.spacing = 5
+        #warning("What IS the superview?????  By adding the constraint centerXInSuperview() it has made the stackView spacing work correctly but the stackView itself is left justified in the 'view'.  It seems as though the constraint is unable to attach to a superview, whatever that might be.  Do you need to create a containerView which is pinned to the edges and add the stackView as a subView to the containerView?  It's weird.")
+        stackView.centerXInSuperview()
         
         let label = UILabel()
         label.font = invariantViewProperties.font

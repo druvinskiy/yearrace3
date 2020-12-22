@@ -1,5 +1,5 @@
 PODS:
-  - HorizonCalendar (1.6.2)
+  - HorizonCalendar (1.6.4)
 
 DEPENDENCIES:
   - HorizonCalendar
@@ -9,8 +9,8 @@ SPEC REPOS:
     - HorizonCalendar
 
 SPEC CHECKSUMS:
-  HorizonCalendar: c2e427aab33655fbd020a7c44bd35417a214c4cf
+  HorizonCalendar: a71ce20c54942832a6b1bb162b7e55b738dfc3fe
 
 PODFILE CHECKSUM: 2f0f72b7ca0fa62b67cf0a847042e8e14e7a460f
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

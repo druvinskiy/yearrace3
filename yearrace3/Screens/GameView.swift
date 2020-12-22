@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameView: View {
     var body: some View {
-        VStack() {
+        VStack(alignment: .center) {
             HorizonView()
             
             Button() {
