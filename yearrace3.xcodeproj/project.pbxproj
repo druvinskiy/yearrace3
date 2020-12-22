@@ -3,14 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		75CA990C45F4F370FBEB453B /* Pods_yearrace3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90DF4181331FE689C91B2F7D /* Pods_yearrace3.framework */; };
+		B812107D259199780010E13C /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812107C259199780010E13C /* UIView+Layout.swift */; };
+		B8138A842590355300BEFC85 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8138A832590355300BEFC85 /* Color+Ext.swift */; };
+		B8138A872590361F00BEFC85 /* YRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8138A862590361F00BEFC85 /* YRButton.swift */; };
+		B8138A8B259040A700BEFC85 /* GameSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8138A8A259040A700BEFC85 /* GameSetup.swift */; };
+		B8138A902590418E00BEFC85 /* HorizonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8138A8F2590418E00BEFC85 /* HorizonView.swift */; };
+		B8138A94259043DC00BEFC85 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8138A93259043DC00BEFC85 /* GameView.swift */; };
 		B83A107D258F0BB6007EE52F /* FirstPlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A107C258F0BB6007EE52F /* FirstPlayerButton.swift */; };
 		B88124C925887B4400FC59AF /* yearrace3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88124C825887B4400FC59AF /* yearrace3App.swift */; };
-		B88124CB25887B4400FC59AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88124CA25887B4400FC59AF /* ContentView.swift */; };
+		B88124CB25887B4400FC59AF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88124CA25887B4400FC59AF /* MainView.swift */; };
 		B88124CD25887B4700FC59AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88124CC25887B4700FC59AF /* Assets.xcassets */; };
 		B88124D025887B4700FC59AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88124CF25887B4700FC59AF /* Preview Assets.xcassets */; };
 		B8AD389F258AF69000F112C5 /* DateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD389E258AF69000F112C5 /* DateButton.swift */; };
@@ -20,10 +26,16 @@
 		90DF4181331FE689C91B2F7D /* Pods_yearrace3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yearrace3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA301378A7599ABBAACB378F /* Pods-yearrace3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yearrace3.release.xcconfig"; path = "Target Support Files/Pods-yearrace3/Pods-yearrace3.release.xcconfig"; sourceTree = "<group>"; };
 		AEDE11FF2D9E4D5372E82926 /* Pods-yearrace3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yearrace3.debug.xcconfig"; path = "Target Support Files/Pods-yearrace3/Pods-yearrace3.debug.xcconfig"; sourceTree = "<group>"; };
+		B812107C259199780010E13C /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		B8138A832590355300BEFC85 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		B8138A862590361F00BEFC85 /* YRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YRButton.swift; sourceTree = "<group>"; };
+		B8138A8A259040A700BEFC85 /* GameSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetup.swift; sourceTree = "<group>"; };
+		B8138A8F2590418E00BEFC85 /* HorizonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonView.swift; sourceTree = "<group>"; };
+		B8138A93259043DC00BEFC85 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		B83A107C258F0BB6007EE52F /* FirstPlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPlayerButton.swift; sourceTree = "<group>"; };
 		B88124C525887B4400FC59AF /* yearrace3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yearrace3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88124C825887B4400FC59AF /* yearrace3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yearrace3App.swift; sourceTree = "<group>"; };
-		B88124CA25887B4400FC59AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B88124CA25887B4400FC59AF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B88124CC25887B4700FC59AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B88124CF25887B4700FC59AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B88124D125887B4700FC59AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +60,6 @@
 				AEDE11FF2D9E4D5372E82926 /* Pods-yearrace3.debug.xcconfig */,
 				AA301378A7599ABBAACB378F /* Pods-yearrace3.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -58,6 +69,67 @@
 				90DF4181331FE689C91B2F7D /* Pods_yearrace3.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8138A802590351C00BEFC85 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B8138A812590352600BEFC85 /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B8138A812590352600BEFC85 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B8138A832590355300BEFC85 /* Color+Ext.swift */,
+				B812107C259199780010E13C /* UIView+Layout.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B8138A892590409400BEFC85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B8138A8A259040A700BEFC85 /* GameSetup.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B8138A8E2590416A00BEFC85 /* UIKit Components */ = {
+			isa = PBXGroup;
+			children = (
+				B8138A8F2590418E00BEFC85 /* HorizonView.swift */,
+			);
+			path = "UIKit Components";
+			sourceTree = "<group>";
+		};
+		B865791C259032DA006C3849 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B8138A8E2590416A00BEFC85 /* UIKit Components */,
+				B865791D259032E5006C3849 /* Buttons */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B865791D259032E5006C3849 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				B8AD389E258AF69000F112C5 /* DateButton.swift */,
+				B83A107C258F0BB6007EE52F /* FirstPlayerButton.swift */,
+				B8138A862590361F00BEFC85 /* YRButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		B865791E25903310006C3849 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B88124CA25887B4400FC59AF /* MainView.swift */,
+				B8138A93259043DC00BEFC85 /* GameView.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		B88124BC25887B4400FC59AF = {
@@ -81,10 +153,11 @@
 		B88124C725887B4400FC59AF /* yearrace3 */ = {
 			isa = PBXGroup;
 			children = (
+				B8138A892590409400BEFC85 /* Model */,
+				B8138A802590351C00BEFC85 /* Utilities */,
+				B865791E25903310006C3849 /* Screens */,
+				B865791C259032DA006C3849 /* Views */,
 				B88124C825887B4400FC59AF /* yearrace3App.swift */,
-				B88124CA25887B4400FC59AF /* ContentView.swift */,
-				B8AD389E258AF69000F112C5 /* DateButton.swift */,
-				B83A107C258F0BB6007EE52F /* FirstPlayerButton.swift */,
 				B88124CC25887B4700FC59AF /* Assets.xcassets */,
 				B88124D125887B4700FC59AF /* Info.plist */,
 				B88124CE25887B4700FC59AF /* Preview Content */,
@@ -213,10 +286,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B88124CB25887B4400FC59AF /* ContentView.swift in Sources */,
+				B8138A872590361F00BEFC85 /* YRButton.swift in Sources */,
+				B8138A8B259040A700BEFC85 /* GameSetup.swift in Sources */,
+				B8138A902590418E00BEFC85 /* HorizonView.swift in Sources */,
+				B88124CB25887B4400FC59AF /* MainView.swift in Sources */,
+				B812107D259199780010E13C /* UIView+Layout.swift in Sources */,
+				B8138A94259043DC00BEFC85 /* GameView.swift in Sources */,
 				B88124C925887B4400FC59AF /* yearrace3App.swift in Sources */,
 				B8AD389F258AF69000F112C5 /* DateButton.swift in Sources */,
 				B83A107D258F0BB6007EE52F /* FirstPlayerButton.swift in Sources */,
+				B8138A842590355300BEFC85 /* Color+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
