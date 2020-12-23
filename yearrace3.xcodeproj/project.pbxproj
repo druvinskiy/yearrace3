@@ -18,6 +18,7 @@
 		B83A38FE2592E3520006C2E7 /* DayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A38FD2592E3520006C2E7 /* DayLabel.swift */; };
 		B83A39022592E41B0006C2E7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A39012592E41B0006C2E7 /* Game.swift */; };
 		B83A39152593C3320006C2E7 /* DateComponents+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A39142593C3320006C2E7 /* DateComponents+Ext.swift */; };
+		B83A391D2593D48B0006C2E7 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A391C2593D48B0006C2E7 /* MainViewModel.swift */; };
 		B88124C925887B4400FC59AF /* yearrace3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88124C825887B4400FC59AF /* yearrace3App.swift */; };
 		B88124CB25887B4400FC59AF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88124CA25887B4400FC59AF /* MainView.swift */; };
 		B88124CD25887B4700FC59AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88124CC25887B4700FC59AF /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		B83A38FD2592E3520006C2E7 /* DayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLabel.swift; sourceTree = "<group>"; };
 		B83A39012592E41B0006C2E7 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B83A39142593C3320006C2E7 /* DateComponents+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents+Ext.swift"; sourceTree = "<group>"; };
+		B83A391C2593D48B0006C2E7 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		B88124C525887B4400FC59AF /* yearrace3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yearrace3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88124C825887B4400FC59AF /* yearrace3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yearrace3App.swift; sourceTree = "<group>"; };
 		B88124CA25887B4400FC59AF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,15 @@
 			path = "UIKit Components";
 			sourceTree = "<group>";
 		};
+		B83A391A2593D4630006C2E7 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				B83A391C2593D48B0006C2E7 /* MainViewModel.swift */,
+				B88124CA25887B4400FC59AF /* MainView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
 		B865791C259032DA006C3849 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +146,7 @@
 		B865791E25903310006C3849 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				B88124CA25887B4400FC59AF /* MainView.swift */,
+				B83A391A2593D4630006C2E7 /* MainView */,
 				B8138A93259043DC00BEFC85 /* GameView.swift */,
 			);
 			path = Screens;
@@ -302,6 +313,7 @@
 				B83A38FB2592E3100006C2E7 /* MonthLabel.swift in Sources */,
 				B812107D259199780010E13C /* UIView+Layout.swift in Sources */,
 				B8138A94259043DC00BEFC85 /* GameView.swift in Sources */,
+				B83A391D2593D48B0006C2E7 /* MainViewModel.swift in Sources */,
 				B88124C925887B4400FC59AF /* yearrace3App.swift in Sources */,
 				B83A39022592E41B0006C2E7 /* Game.swift in Sources */,
 				B8AD389F258AF69000F112C5 /* DateButton.swift in Sources */,

@@ -12,6 +12,7 @@ struct DateButton: View {
     var day = "31"
     
     @Environment(\.colorScheme) var colorScheme
+    @Binding var isSelected: Bool
     
     var body: some View {
         VStack(spacing: 0) {
@@ -34,6 +35,7 @@ struct DateButton: View {
                         .foregroundColor(colorScheme == .dark ? .black : .white)
                 )
         }
+        .border(isSelected ? Color.brandSecondary : Color.clear, width: 5)
         .cornerRadius(5)
 
     }
@@ -41,7 +43,7 @@ struct DateButton: View {
 
 struct DateButton_Previews: PreviewProvider {
     static var previews: some View {
-        DateButton()
+        DateButton(isSelected: .constant(true))
             .preferredColorScheme(.dark)
     }
 }

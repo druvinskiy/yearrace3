@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject var viewModel = MainViewModel()
+    
     var body: some View {
         ZStack {
             Color(.systemBackground)
@@ -35,14 +37,14 @@ struct MainView: View {
                     Button() {
                         print("Test")
                     } label: {
-                        DateButton(month: "Dec", day: "31")
+                        DateButton(month: "Jan", day: "1", isSelected: $viewModel.game.mode == .getjan1)
                     }
                     
-                    Button() {
-                        print("Test")
-                    } label: {
-                        DateButton(month: "Jan", day: "1")
-                    }
+//                    Button() {
+//                        print("Test")
+//                    } label: {
+//                        DateButton(month: "Dec", day: "31", isSelected: $viewModel.game.mode == .getdec31)
+//                    }
                 }
                 .padding()
                 
@@ -76,7 +78,7 @@ struct MainView: View {
                 .padding(60)
             }
         }
-        .fullScreenCover(isPresented: .constant(true)) {
+        .fullScreenCover(isPresented: .constant(false)) {
             GameView()
         }
     }

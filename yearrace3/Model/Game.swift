@@ -35,8 +35,10 @@ class Game {
     var lastChosenDate: DateComponents
 
     var whoMadeLastMove: Player!
+    var firstPlayer: Player
+    var mode: Mode
 
-    init(mode: Mode) {
+    init(mode: Mode, firstPlayer: Player) {
         let startMonthInt = mode == .getdec31 ? 1 : 12
         let startDayInt = mode == .getdec31 ? 1 : 31
         startDate = DateComponents(month: startMonthInt, day: startDayInt)
@@ -47,6 +49,9 @@ class Game {
 
         currentDate = startDate
         lastChosenDate = startDate
+        
+        self.firstPlayer = firstPlayer
+        self.mode = mode
     }
 
     func chooseDate(date: DateComponents) -> Result {
@@ -77,8 +82,8 @@ class Game {
 }
 
 class GetDec31: Game {
-    init() {
-        super.init(mode: .getdec31)
+    init(firstPlayer: Player) {
+        super.init(mode: .getdec31, firstPlayer: firstPlayer)
     }
 
     override func isValidDate(date: DateComponents) -> Result {
@@ -124,8 +129,8 @@ class GetDec31: Game {
 }
 
 class GetJan1: Game {
-    init() {
-        super.init(mode: .getjan1)
+    init(firstPlayer: Player) {
+        super.init(mode: .getjan1, firstPlayer: firstPlayer)
     }
 
     override func isValidDate(date: DateComponents) -> Result {

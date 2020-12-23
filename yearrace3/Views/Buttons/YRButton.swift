@@ -16,7 +16,7 @@ struct YRButton: View {
             .fontWeight(.semibold)
             .frame(width: 260, height: 50)
             .foregroundColor(.white)
-            .background(Color(#colorLiteral(red: 0.1803921569, green: 0.2352941176, blue: 0.8196078431, alpha: 1)))
+            .background(Color.brandSecondary)
             .cornerRadius(10)
     }
 }

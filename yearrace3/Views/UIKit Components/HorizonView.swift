@@ -11,7 +11,7 @@ import HorizonCalendar
 final class HorizonView: UIViewRepresentable {
 //    private var selectedDay: Day?
     
-    let game = GetDec31()
+    let game = GetDec31(firstPlayer: .user)
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
