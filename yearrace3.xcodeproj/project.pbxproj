@@ -11,10 +11,12 @@
 		B812107D259199780010E13C /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812107C259199780010E13C /* UIView+Layout.swift */; };
 		B8138A842590355300BEFC85 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8138A832590355300BEFC85 /* Color+Ext.swift */; };
 		B8138A872590361F00BEFC85 /* YRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8138A862590361F00BEFC85 /* YRButton.swift */; };
-		B8138A8B259040A700BEFC85 /* GameSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8138A8A259040A700BEFC85 /* GameSetup.swift */; };
 		B8138A902590418E00BEFC85 /* HorizonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8138A8F2590418E00BEFC85 /* HorizonView.swift */; };
 		B8138A94259043DC00BEFC85 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8138A93259043DC00BEFC85 /* GameView.swift */; };
 		B83A107D258F0BB6007EE52F /* FirstPlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A107C258F0BB6007EE52F /* FirstPlayerButton.swift */; };
+		B83A38FB2592E3100006C2E7 /* MonthLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A38FA2592E3100006C2E7 /* MonthLabel.swift */; };
+		B83A38FE2592E3520006C2E7 /* DayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A38FD2592E3520006C2E7 /* DayLabel.swift */; };
+		B83A39022592E41B0006C2E7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A39012592E41B0006C2E7 /* Game.swift */; };
 		B88124C925887B4400FC59AF /* yearrace3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88124C825887B4400FC59AF /* yearrace3App.swift */; };
 		B88124CB25887B4400FC59AF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88124CA25887B4400FC59AF /* MainView.swift */; };
 		B88124CD25887B4700FC59AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88124CC25887B4700FC59AF /* Assets.xcassets */; };
@@ -29,10 +31,12 @@
 		B812107C259199780010E13C /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		B8138A832590355300BEFC85 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		B8138A862590361F00BEFC85 /* YRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YRButton.swift; sourceTree = "<group>"; };
-		B8138A8A259040A700BEFC85 /* GameSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetup.swift; sourceTree = "<group>"; };
 		B8138A8F2590418E00BEFC85 /* HorizonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonView.swift; sourceTree = "<group>"; };
 		B8138A93259043DC00BEFC85 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		B83A107C258F0BB6007EE52F /* FirstPlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPlayerButton.swift; sourceTree = "<group>"; };
+		B83A38FA2592E3100006C2E7 /* MonthLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthLabel.swift; sourceTree = "<group>"; };
+		B83A38FD2592E3520006C2E7 /* DayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLabel.swift; sourceTree = "<group>"; };
+		B83A39012592E41B0006C2E7 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B88124C525887B4400FC59AF /* yearrace3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yearrace3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88124C825887B4400FC59AF /* yearrace3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yearrace3App.swift; sourceTree = "<group>"; };
 		B88124CA25887B4400FC59AF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -91,7 +95,7 @@
 		B8138A892590409400BEFC85 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B8138A8A259040A700BEFC85 /* GameSetup.swift */,
+				B83A39012592E41B0006C2E7 /* Game.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				B8138A8F2590418E00BEFC85 /* HorizonView.swift */,
+				B83A38FA2592E3100006C2E7 /* MonthLabel.swift */,
+				B83A38FD2592E3520006C2E7 /* DayLabel.swift */,
 			);
 			path = "UIKit Components";
 			sourceTree = "<group>";
@@ -287,15 +293,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8138A872590361F00BEFC85 /* YRButton.swift in Sources */,
-				B8138A8B259040A700BEFC85 /* GameSetup.swift in Sources */,
 				B8138A902590418E00BEFC85 /* HorizonView.swift in Sources */,
 				B88124CB25887B4400FC59AF /* MainView.swift in Sources */,
+				B83A38FB2592E3100006C2E7 /* MonthLabel.swift in Sources */,
 				B812107D259199780010E13C /* UIView+Layout.swift in Sources */,
 				B8138A94259043DC00BEFC85 /* GameView.swift in Sources */,
 				B88124C925887B4400FC59AF /* yearrace3App.swift in Sources */,
+				B83A39022592E41B0006C2E7 /* Game.swift in Sources */,
 				B8AD389F258AF69000F112C5 /* DateButton.swift in Sources */,
 				B83A107D258F0BB6007EE52F /* FirstPlayerButton.swift in Sources */,
 				B8138A842590355300BEFC85 /* Color+Ext.swift in Sources */,
+				B83A38FE2592E3520006C2E7 /* DayLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
