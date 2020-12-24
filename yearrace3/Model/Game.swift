@@ -27,7 +27,7 @@ enum Result : String {
     case invalid_date = "This date does not exist."
 }
 
-class Game {
+class Game: ObservableObject {
 
     var startDate: DateComponents
     var endDate: DateComponents
@@ -37,6 +37,9 @@ class Game {
     var whoMadeLastMove: Player!
     var firstPlayer: Player
     var mode: Mode
+    
+//    @Published var isDec31Selected = false
+//    @Published var isJan1Selected = true
 
     init(mode: Mode, firstPlayer: Player) {
         let startMonthInt = mode == .getdec31 ? 1 : 12
