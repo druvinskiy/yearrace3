@@ -11,6 +11,7 @@ struct FirstPlayerButton: View {
     var response = "Yes"
     
     @Environment(\.colorScheme) var colorScheme
+    var isSelected: Bool
     
     var body: some View {
         VStack(spacing: 0) {
@@ -30,11 +31,12 @@ struct FirstPlayerButton: View {
                 .foregroundColor(colorScheme == .dark ? .black : .white)
                 .offset(y: 10.0)
         )
+        .border(isSelected ? Color.brandSecondary : Color.clear, width: 5)
     }
 }
 
 struct FirstPlayerButton_Previews: PreviewProvider {
     static var previews: some View {
-        FirstPlayerButton()
+        FirstPlayerButton(isSelected: true)
     }
 }

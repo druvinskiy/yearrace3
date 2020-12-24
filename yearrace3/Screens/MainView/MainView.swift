@@ -38,13 +38,13 @@ struct MainView: View {
                         viewModel.setMode(mode: .getjan1)
                         
                     } label: {
-                        DateButton(month: "Jan", day: "1", isSelected: $viewModel.isJan1Selected)
+                        DateButton(month: "Jan", day: "1", isSelected: viewModel.game.mode == .getjan1)
                     }
                     
                     Button() {
                         viewModel.setMode(mode: .getdec31)
                     } label: {
-                        DateButton(month: "Dec", day: "31", isSelected: $viewModel.isDec31Selected)
+                        DateButton(month: "Dec", day: "31", isSelected: viewModel.game.mode == .getdec31)
                     }
                 }
                 .padding()
@@ -57,17 +57,16 @@ struct MainView: View {
                 
                 HStack(spacing: 40) {
                     Button() {
-                        print("Test")
+                        viewModel.setFirstPlayer(firstPlayer: .user)
                     } label: {
-                        FirstPlayerButton(response: "Yes")
+                        FirstPlayerButton(response: "Yes", isSelected: viewModel.game.firstPlayer == .user)
                     }
                     
                     Button() {
-                        print("Test")
+                        viewModel.setFirstPlayer(firstPlayer: .computer)
                     } label: {
-                        FirstPlayerButton(response: "No")
+                        FirstPlayerButton(response: "No", isSelected: viewModel.game.firstPlayer == .computer)
                     }
-                    
                 }
                 
                 Button() {

@@ -8,13 +8,13 @@
 import SwiftUI
 
 final class MainViewModel: ObservableObject {
-    var game: Game = GetJan1(firstPlayer: .user)
-    @Published var isDec31Selected = false
-    @Published var isJan1Selected = true
+    @Published var game: Game = GetJan1(firstPlayer: .user)
     
     func setMode(mode: Mode) {
         game = mode == .getdec31 ? GetDec31(firstPlayer: game.firstPlayer) : GetJan1(firstPlayer: game.firstPlayer)
-        isJan1Selected = mode == .getjan1
-        isDec31Selected = mode == .getdec31
+    }
+    
+    func setFirstPlayer(firstPlayer: Player) {
+        game = game.mode == .getdec31 ? GetDec31(firstPlayer: firstPlayer) : GetJan1(firstPlayer: firstPlayer)
     }
 }
