@@ -27,11 +27,11 @@ enum Result : String {
     case invalid_date = "This date does not exist."
 }
 
-class Game {
+class Game: ObservableObject {
 
     var startDate: DateComponents
     var endDate: DateComponents
-    var currentDate: DateComponents
+    @Published var currentDate: DateComponents
     var lastChosenDate: DateComponents
 
     var whoMadeLastMove: Player!
@@ -63,11 +63,14 @@ class Game {
         currentDate = date
         print("Current date is now: \(date)")
         whoMadeLastMove = .user
+        makeMove()
         return Result.ok
     }
 
     func isValidDate(date: DateComponents) -> Result {return Result.ok}
     func startGame() {
+        guard firstPlayer == .computer else { return }
+        
         let firstDay = Int(arc4random_uniform(UInt32(27))) + 1
         currentDate = DateComponents(month: startDate.month, day: firstDay)
         lastChosenDate = currentDate

@@ -8,10 +8,10 @@
 import SwiftUI
 import HorizonCalendar
 
-final class HorizonView: UIViewRepresentable {
-//    private var selectedDay: Day?
-    
-    let game = GetDec31(firstPlayer: .user)
+struct HorizonView: UIViewRepresentable {
+    @ObservedObject var game: Game
+    @Binding var userSelectedDate: DateComponents?
+    @Binding var shouldScroll: Bool
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -21,38 +21,42 @@ final class HorizonView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> CalendarView {
         let calendarView = CalendarView(initialContent: makeContent())
-//        var components = DateComponents(year: 2020, month: 07, day: 11)
+        let date = Calendar.current.date(from: self.game.currentDate)!
         
-//        let july2020 = Calendar.current.date(from: components)!
+        calendarView.scroll(
+            toDayContaining: date,
+            scrollPosition: .centered,
+            animated: true)
         
-//        calendarView.scroll(
-//            toDayContaining: july2020,
-//            scrollPosition: .centered,
-//            animated: true)
-                        
-//        self.selectedDay = Calendar.current.day(containing: july2020)
+        calendarView.setContent(self.makeContent())
         
         
-        calendarView.daySelectionHandler = { [weak self] day in
-            guard let self = self else { return }
+        calendarView.daySelectionHandler = { day in
             
             let components = DateComponents(month: day.month.month, day: day.day)
-            self.game.chooseDate(date: components)
-            
-            self.game.makeMove()
-            
-            let date = Calendar.current.date(from: self.game.currentDate)!
-            
-            calendarView.scroll(
-                toDayContaining: date,
-                scrollPosition: .centered,
-                animated: true)
+            self.userSelectedDate = components
+            calendarView.setContent(self.makeContent())
         }
         
         return calendarView
     }
     
-    func updateUIView(_ uiView: CalendarView, context: UIViewRepresentableContext<HorizonView>) {}
+    func updateUIView(_ uiView: CalendarView, context: UIViewRepresentableContext<HorizonView>) {
+        let date = Calendar.current.date(from: self.game.currentDate)!
+        
+        uiView.setContent(self.makeContent())
+        
+        if shouldScroll {
+            uiView.scroll(
+                toDayContaining: date,
+                scrollPosition: .centered,
+                animated: true)
+            
+            uiView.didEndDecelerating  = { _ in
+                shouldScroll = false
+            }
+        }
+    }
     
     private func makeContent() -> CalendarViewContent {
         let calendar = Calendar.current
@@ -61,20 +65,20 @@ final class HorizonView: UIViewRepresentable {
         
         let textColor: UIColor
         if #available(iOS 13.0, *) {
-          textColor = .label
+            textColor = .label
         } else {
-          textColor = .black
+            textColor = .black
         }
         
         return CalendarViewContent(
             calendar: calendar,
-            visibleDateRange: (startDate...endDate),
+            visibleDateRange: startDate...endDate,
             monthsLayout: .vertical(options: VerticalMonthsLayoutOptions()))
             
-            .withMonthHeaderItemModelProvider { [weak self] month in
+            .withMonthHeaderItemModelProvider { month in
                 let monthDateComponents = month.components
                 let monthDate = Calendar.current.date(from: monthDateComponents)!
-                let monthText = self?.dateFormatter.string(from: monthDate)
+                let monthText = self.dateFormatter.string(from: monthDate)
                 
                 return CalendarItemModel<MonthLabel> (
                     invariantViewProperties: .init(
@@ -84,24 +88,35 @@ final class HorizonView: UIViewRepresentable {
                         backgroundColor: .clear,
                         isAccessibilityElement: true,
                         accessibilityTraits: [.header]),
-                    viewModel: .init(monthText: monthText ?? ""))
+                    viewModel: .init(monthText: monthText))
             }
             
             .withDayItemModelProvider { day in
-                  var invariantViewProperties = DayLabel.InvariantViewProperties(
+                var invariantViewProperties = DayLabel.InvariantViewProperties(
                     font: UIFont.systemFont(ofSize: 18),
                     textColor: textColor,
                     backgroundColor: .clear)
-
-//                if day == self.selectedDay {
-//                    invariantViewProperties.textColor = .white
-//                    invariantViewProperties.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.2352941176, blue: 0.8196078431, alpha: 1)
-//                  }
-                  
-                  return CalendarItemModel<DayLabel>(
+                
+                let computerChoiceDate = Calendar.current.date(from: self.game.currentDate)!
+                
+                if day == Calendar.current.day(containing: computerChoiceDate) {
+                    invariantViewProperties.textColor = .white
+                    invariantViewProperties.backgroundColor = UIColor.brandSecondary
+                }
+                
+                if let userSelectedDate = userSelectedDate {
+                    let userSelectedDate = Calendar.current.date(from: userSelectedDate)!
+                    
+                    if day == Calendar.current.day(containing: userSelectedDate) {
+                        invariantViewProperties.textColor = .white
+                        invariantViewProperties.backgroundColor = UIColor.brandPrimary
+                    }
+                }
+                
+                return CalendarItemModel<DayLabel>(
                     invariantViewProperties: invariantViewProperties,
                     viewModel: .init(day: day))
-              }
+            }
             
             .withInterMonthSpacing(24)
             .withVerticalDayMargin(8)

@@ -70,7 +70,7 @@ struct MainView: View {
                 }
                 
                 Button() {
-                    print("Test")
+                    viewModel.isShowingGameView = true
                 } label: {
                     YRButton(title: "Start")
                         .foregroundColor(.black)
@@ -78,8 +78,8 @@ struct MainView: View {
                 .padding(60)
             }
         }
-        .fullScreenCover(isPresented: .constant(false)) {
-            GameView()
+        .fullScreenCover(isPresented: $viewModel.isShowingGameView) {
+            GameView(game: viewModel.game, mainViewModel: viewModel)
         }
     }
 }
