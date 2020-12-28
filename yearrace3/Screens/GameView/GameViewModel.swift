@@ -13,6 +13,13 @@ final class GameViewModel: ObservableObject {
     @Published var shouldScroll = false
     @Published var result = Result.ok
     
+    @Published var gameEndMessage = ""
+    @Published var submitButtonShouldBeVisible = true
+    @Published var gameEndColor = Color.brandBad
+    
+    @Published var timeRemaining = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var submitButtonTitle: LocalizedStringKey {
         guard userSelectedDate != nil else {
             return "Choose a Date"
@@ -26,7 +33,7 @@ final class GameViewModel: ObservableObject {
             return .gray
         }
         
-        return mainViewModel.game.isValidDate(date: userSelectedDate) ? .brandSecondary : Color(#colorLiteral(red: 0.7215686275, green: 0, blue: 0.3607843137, alpha: 1))
+        return mainViewModel.game.isValidDate(date: userSelectedDate) ? .brandSecondary : .brandBad
     }
     
     var game: Game {
@@ -49,11 +56,21 @@ final class GameViewModel: ObservableObject {
         mainViewModel.resetGame()
     }
     
+    func onReceiveTimer() {
+        if timeRemaining > 0 {
+            timeRemaining -= 1
+            return
+        }
+        
+        result = .ok
+    }
+    
     func confirmDate() {
         guard let userSelectedDate = userSelectedDate else { return }
         
         guard game.isValidDate(date: userSelectedDate) else {
             result = game.isValidDate(date: userSelectedDate)
+            timeRemaining = 2
             return
         }
         
@@ -61,5 +78,15 @@ final class GameViewModel: ObservableObject {
         mainViewModel.game.chooseDate(userSelectedDate)
         self.userSelectedDate = nil
         shouldScroll = true
+        
+        configureWinnerState()
+    }
+    
+    private func configureWinnerState() {
+        guard let winner = game.winner else { return }
+        
+        gameEndMessage = winner == .user ? WonLostMessage.won.rawValue : WonLostMessage.lost.rawValue
+        gameEndColor = winner == .user ? .brandGood : .brandBad
+        submitButtonShouldBeVisible = false
     }
 }

@@ -27,16 +27,22 @@ enum Result : String {
     case invalid_date = "This date does not exist."
 }
 
+enum WonLostMessage: String {
+    case won = "Well done. You win."
+    case lost = "Sorry, you lost."
+}
+
 class Game: ObservableObject {
 
     var startDate: DateComponents
     var endDate: DateComponents
-    @Published var currentDate: DateComponents
     var lastChosenDate: DateComponents
-
-    var whoMadeLastMove: Player!
+    fileprivate var whoMadeLastMove: Player
     var firstPlayer: Player
     var mode: Mode
+    
+    @Published var currentDate: DateComponents
+    var winner: Player?
     
     static let defaultGame: Game = GetJan1(firstPlayer: .user)
 
@@ -53,6 +59,7 @@ class Game: ObservableObject {
         lastChosenDate = startDate
         
         self.firstPlayer = firstPlayer
+        self.whoMadeLastMove = firstPlayer
         self.mode = mode
     }
 
@@ -66,7 +73,13 @@ class Game: ObservableObject {
         currentDate = date
         print("Current date is now: \(date)")
         whoMadeLastMove = .user
-        makeMove()
+        
+        checkForWinner()
+        
+        if winner == nil {
+            makeMove()
+        }
+        
         return Result.ok
     }
 
@@ -83,8 +96,8 @@ class Game: ObservableObject {
     func restart() { currentDate = startDate }
     func makeMove() {}
     func getNextPolePosition() -> DateComponents {return DateComponents(month: -1, day: -1) }
-    func checkForWinner() -> Player? {
-        return (currentDate == endDate) ? whoMadeLastMove : nil
+    func checkForWinner() {
+        winner = (currentDate == endDate) ? whoMadeLastMove : nil
     }
     func undo() {currentDate = lastChosenDate}
 }
@@ -118,6 +131,8 @@ class GetDec31: Game {
         }
 
         whoMadeLastMove = .computer
+        
+        checkForWinner()
     }
 
     override func getNextPolePosition() -> DateComponents {

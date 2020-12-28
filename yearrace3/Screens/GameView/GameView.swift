@@ -11,9 +11,6 @@ import HorizonCalendar
 struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     
-    @State var timeRemaining = 10
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
     var body: some View {
         VStack(alignment: .center) {
             HorizonView(game: viewModel.game,
@@ -23,18 +20,18 @@ struct GameView: View {
                 .padding(.bottom)
             
             VStack(spacing: 20) {
-                Button() {
-                    viewModel.confirmDate()
-                    
-                    if viewModel.result != .ok {
-                        timeRemaining = 1
+                if viewModel.submitButtonShouldBeVisible {
+                    Button() {
+                        viewModel.confirmDate()
                     }
-                    
-                }
-                label: {
-                    withAnimation(.easeInOut(duration: 0.5)) {
+                    label: {
                         YRButton(title: viewModel.submitButtonTitle, color: viewModel.submitButtonColor)
                     }
+                } else {
+                    Text(viewModel.gameEndMessage)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(viewModel.gameEndColor)
                 }
                 
                 Button() {
@@ -50,13 +47,8 @@ struct GameView: View {
             viewModel.startGame()
         }
         
-        .onReceive(timer) { _ in
-            if self.timeRemaining > 0 {
-                self.timeRemaining -= 1
-                return
-            }
-            
-            viewModel.result = .ok
+        .onReceive(viewModel.timer) { _ in
+            viewModel.onReceiveTimer()
         }
     }
 }
