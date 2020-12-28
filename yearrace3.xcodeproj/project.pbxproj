@@ -19,6 +19,7 @@
 		B83A39022592E41B0006C2E7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A39012592E41B0006C2E7 /* Game.swift */; };
 		B83A39152593C3320006C2E7 /* DateComponents+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A39142593C3320006C2E7 /* DateComponents+Ext.swift */; };
 		B83A391D2593D48B0006C2E7 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A391C2593D48B0006C2E7 /* MainViewModel.swift */; };
+		B8676890259943C400167C32 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867688F259943C400167C32 /* TooltipView.swift */; };
 		B88124C925887B4400FC59AF /* yearrace3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88124C825887B4400FC59AF /* yearrace3App.swift */; };
 		B88124CB25887B4400FC59AF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88124CA25887B4400FC59AF /* MainView.swift */; };
 		B88124CD25887B4700FC59AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88124CC25887B4700FC59AF /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		B83A39012592E41B0006C2E7 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B83A39142593C3320006C2E7 /* DateComponents+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents+Ext.swift"; sourceTree = "<group>"; };
 		B83A391C2593D48B0006C2E7 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		B867688F259943C400167C32 /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		B88124C525887B4400FC59AF /* yearrace3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yearrace3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88124C825887B4400FC59AF /* yearrace3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yearrace3App.swift; sourceTree = "<group>"; };
 		B88124CA25887B4400FC59AF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				B8138A8F2590418E00BEFC85 /* HorizonView.swift */,
 				B83A38FA2592E3100006C2E7 /* MonthLabel.swift */,
 				B83A38FD2592E3520006C2E7 /* DayLabel.swift */,
+				B867688F259943C400167C32 /* TooltipView.swift */,
 			);
 			path = "UIKit Components";
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			files = (
 				B8138A872590361F00BEFC85 /* YRButton.swift in Sources */,
 				B83A39152593C3320006C2E7 /* DateComponents+Ext.swift in Sources */,
+				B8676890259943C400167C32 /* TooltipView.swift in Sources */,
 				B8138A902590418E00BEFC85 /* HorizonView.swift in Sources */,
 				B8FB9FEF259567FE00D2A450 /* GameViewModel.swift in Sources */,
 				B88124CB25887B4400FC59AF /* MainView.swift in Sources */,

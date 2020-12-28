@@ -12,6 +12,9 @@ struct HorizonView: UIViewRepresentable {
     @ObservedObject var game: Game
     @Binding var userSelectedDate: DateComponents?
     @Binding var shouldScroll: Bool
+    @Binding var result: Result
+    
+    let calendar = Calendar(identifier: .gregorian)
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -21,7 +24,7 @@ struct HorizonView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> CalendarView {
         let calendarView = CalendarView(initialContent: makeContent())
-        let date = Calendar.current.date(from: self.game.currentDate)!
+        let date = calendar.date(from: self.game.currentDate)!
         
         calendarView.scroll(
             toDayContaining: date,
@@ -35,6 +38,7 @@ struct HorizonView: UIViewRepresentable {
             
             let components = DateComponents(month: day.month.month, day: day.day)
             self.userSelectedDate = components
+            result = .ok
             calendarView.setContent(self.makeContent())
         }
         
@@ -42,7 +46,7 @@ struct HorizonView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: CalendarView, context: UIViewRepresentableContext<HorizonView>) {
-        let date = Calendar.current.date(from: self.game.currentDate)!
+        let date = calendar.date(from: self.game.currentDate)!
         
         uiView.setContent(self.makeContent())
         
@@ -59,7 +63,6 @@ struct HorizonView: UIViewRepresentable {
     }
     
     private func makeContent() -> CalendarViewContent {
-        let calendar = Calendar.current
         let startDate = calendar.date(from: DateComponents(month: 01, day: 01))!
         let endDate = calendar.date(from: DateComponents(month: 12, day: 31))!
         
@@ -70,6 +73,14 @@ struct HorizonView: UIViewRepresentable {
             textColor = .black
         }
         
+        let overlaidItemLocations: Set<CalendarViewContent.OverlaidItemLocation>
+        if let userSelectedDateComponents = userSelectedDate, result != .ok {
+            let dateToOverlay = calendar.date(from: userSelectedDateComponents)!
+            overlaidItemLocations = [.day(containingDate: dateToOverlay)]
+        } else {
+            overlaidItemLocations = []
+        }
+        
         return CalendarViewContent(
             calendar: calendar,
             visibleDateRange: startDate...endDate,
@@ -77,7 +88,7 @@ struct HorizonView: UIViewRepresentable {
             
             .withMonthHeaderItemModelProvider { month in
                 let monthDateComponents = month.components
-                let monthDate = Calendar.current.date(from: monthDateComponents)!
+                let monthDate = calendar.date(from: monthDateComponents)!
                 let monthText = self.dateFormatter.string(from: monthDate)
                 
                 return CalendarItemModel<MonthLabel> (
@@ -97,17 +108,17 @@ struct HorizonView: UIViewRepresentable {
                     textColor: textColor,
                     backgroundColor: .clear)
                 
-                let computerChoiceDate = Calendar.current.date(from: self.game.currentDate)!
+                let computerChoiceDate = calendar.date(from: self.game.currentDate)!
                 
-                if day == Calendar.current.day(containing: computerChoiceDate) {
+                if day == calendar.day(containing: computerChoiceDate) {
                     invariantViewProperties.textColor = .white
                     invariantViewProperties.backgroundColor = UIColor.brandSecondary
                 }
                 
-                if let userSelectedDate = userSelectedDate {
-                    let userSelectedDate = Calendar.current.date(from: userSelectedDate)!
+                if let userSelectedDateComponents = userSelectedDate {
+                    let userSelectedDate = calendar.date(from: userSelectedDateComponents)!
                     
-                    if day == Calendar.current.day(containing: userSelectedDate) {
+                    if day == calendar.day(containing: userSelectedDate) {
                         invariantViewProperties.textColor = .white
                         invariantViewProperties.backgroundColor = UIColor.brandPrimary
                     }
@@ -116,6 +127,18 @@ struct HorizonView: UIViewRepresentable {
                 return CalendarItemModel<DayLabel>(
                     invariantViewProperties: invariantViewProperties,
                     viewModel: .init(day: day))
+            }
+            
+            .withOverlayItemModelProvider(for: overlaidItemLocations) { overlayLayoutContext in
+                CalendarItemModel<TooltipView>(
+                    invariantViewProperties: .init(
+                        backgroundColor: .white,
+                        borderColor: .black,
+                        font: UIFont.systemFont(ofSize: 16),
+                        textColor: .black),
+                    viewModel: .init(
+                        frameOfTooltippedItem: overlayLayoutContext.overlaidItemFrame,
+                        text: result.rawValue))
             }
             
             .withInterMonthSpacing(24)

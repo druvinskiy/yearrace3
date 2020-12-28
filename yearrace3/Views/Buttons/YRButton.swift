@@ -9,6 +9,16 @@ import SwiftUI
 
 struct YRButton: View {
     let title: LocalizedStringKey
+    var color: Color = .brandSecondary
+    
+    init(title: LocalizedStringKey, color: Color) {
+        self.title = title
+        self.color = color
+    }
+    
+    init(title: LocalizedStringKey) {
+        self.title = title
+    }
     
     var body: some View {
         Text(title)
@@ -16,7 +26,7 @@ struct YRButton: View {
             .fontWeight(.semibold)
             .frame(width: 260, height: 50)
             .foregroundColor(.white)
-            .background(Color.brandSecondary)
+            .background(color)
             .cornerRadius(10)
     }
 }

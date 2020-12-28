@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class MainViewModel: ObservableObject {
-    @Published var game: Game = GetJan1(firstPlayer: .user)
+    @Published var game = Game.defaultGame
     @Published var isShowingGameView = false
     
     func setMode(mode: Mode) {

@@ -79,7 +79,8 @@ struct MainView: View {
             }
         }
         .fullScreenCover(isPresented: $viewModel.isShowingGameView) {
-            GameView(game: viewModel.game, mainViewModel: viewModel)
+            let gameViewModel = GameViewModel(mainViewModel: viewModel)
+            GameView(viewModel: gameViewModel)
         }
     }
 }

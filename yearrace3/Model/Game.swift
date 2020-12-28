@@ -37,6 +37,8 @@ class Game: ObservableObject {
     var whoMadeLastMove: Player!
     var firstPlayer: Player
     var mode: Mode
+    
+    static let defaultGame: Game = GetJan1(firstPlayer: .user)
 
     init(mode: Mode, firstPlayer: Player) {
         let startMonthInt = mode == .getdec31 ? 1 : 12
@@ -54,7 +56,8 @@ class Game: ObservableObject {
         self.mode = mode
     }
 
-    func chooseDate(date: DateComponents) -> Result {
+    @discardableResult
+    func chooseDate(_ date: DateComponents) -> Result {
         guard isValidDate(date: date) == Result.ok else {
             return isValidDate(date: date)
         }
@@ -68,6 +71,8 @@ class Game: ObservableObject {
     }
 
     func isValidDate(date: DateComponents) -> Result {return Result.ok}
+    func isValidDate(date: DateComponents) -> Bool { return isValidDate(date: date) == .ok }
+    
     func startGame() {
         guard firstPlayer == .computer else { return }
         
@@ -98,8 +103,7 @@ class GetDec31: Game {
 
         return Result.ok
     }
-
-
+    
     override func makeMove() {
         // Pole position rule: day - month = 19
         let poleSameMonth = DateComponents(month: currentDate.month, day: currentDate.month! + 19)

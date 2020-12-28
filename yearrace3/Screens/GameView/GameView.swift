@@ -9,28 +9,36 @@ import SwiftUI
 import HorizonCalendar
 
 struct GameView: View {
-    @ObservedObject var game: Game
-    @ObservedObject var mainViewModel: MainViewModel
-    @State var userSelectedDate: DateComponents?
-    @State var shouldScroll = false
+    @ObservedObject var viewModel: GameViewModel
+    
+    @State var timeRemaining = 10
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack(alignment: .center) {
-            HorizonView(game: game, userSelectedDate: $userSelectedDate, shouldScroll: $shouldScroll)
+            HorizonView(game: viewModel.game,
+                        userSelectedDate: $viewModel.userSelectedDate,
+                        shouldScroll: $viewModel.shouldScroll,
+                        result: $viewModel.result)
                 .padding(.bottom)
             
             VStack(spacing: 20) {
                 Button() {
-                    if let userSelectedDate = userSelectedDate {
-                        game.chooseDate(date: userSelectedDate)
-                        shouldScroll = true
+                    viewModel.confirmDate()
+                    
+                    if viewModel.result != .ok {
+                        timeRemaining = 1
                     }
-                } label: {
-                    YRButton(title: "Select")
+                    
+                }
+                label: {
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        YRButton(title: viewModel.submitButtonTitle, color: viewModel.submitButtonColor)
+                    }
                 }
                 
                 Button() {
-                    mainViewModel.resetGame()
+                    viewModel.resetGame()
                 } label: {
                     Text("Go Back")
                         .font(.title3)
@@ -39,16 +47,23 @@ struct GameView: View {
             }
         }
         .onAppear() {
-            game.startGame()
+            viewModel.startGame()
+        }
+        
+        .onReceive(timer) { _ in
+            if self.timeRemaining > 0 {
+                self.timeRemaining -= 1
+                return
+            }
+            
+            viewModel.result = .ok
         }
     }
 }
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(game: Game(mode: .getdec31,
-                            firstPlayer: .user),
-                 mainViewModel: .init())
+        GameView(viewModel: GameViewModel(mainViewModel: MainViewModel()))
             .preferredColorScheme(.dark)
     }
 }
