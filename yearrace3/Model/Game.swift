@@ -180,6 +180,8 @@ class GetJan1: Game {
         }
 
         whoMadeLastMove = .computer
+        
+        checkForWinner()
     }
 
     override func getNextPolePosition() -> DateComponents {
