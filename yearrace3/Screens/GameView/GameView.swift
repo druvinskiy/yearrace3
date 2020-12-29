@@ -16,8 +16,11 @@ struct GameView: View {
             HorizonView(game: viewModel.game,
                         userSelectedDate: $viewModel.userSelectedDate,
                         shouldScroll: $viewModel.shouldScroll,
-                        result: $viewModel.result)
-                .padding(.bottom)
+                        result: $viewModel.result,
+                        submitButtonToggle: $viewModel.submitButtonToggle)
+                .padding([.leading, .trailing])
+            
+            Spacer(minLength: 10)
             
             VStack(spacing: 20) {
                 if viewModel.submitButtonShouldBeVisible {
@@ -25,7 +28,9 @@ struct GameView: View {
                         viewModel.confirmDate()
                     }
                     label: {
-                        YRButton(title: viewModel.submitButtonTitle, color: viewModel.submitButtonColor)
+                        YRButton(title: viewModel.submitButtonTitle,
+                                 color: viewModel.submitButtonColor,
+                                 tapped: viewModel.submitButtonToggle)
                     }
                 } else {
                     Text(viewModel.gameEndMessage)
@@ -42,6 +47,8 @@ struct GameView: View {
                         .foregroundColor(.secondary)
                 }
             }
+            
+            Spacer(minLength: 10)
         }
         .onAppear() {
             viewModel.startGame()

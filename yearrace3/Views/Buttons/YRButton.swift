@@ -10,10 +10,12 @@ import SwiftUI
 struct YRButton: View {
     let title: LocalizedStringKey
     var color: Color = .brandSecondary
+    var tapped: Bool = false
     
-    init(title: LocalizedStringKey, color: Color) {
+    init(title: LocalizedStringKey, color: Color, tapped: Bool) {
         self.title = title
         self.color = color
+        self.tapped = tapped
     }
     
     init(title: LocalizedStringKey) {
@@ -21,13 +23,26 @@ struct YRButton: View {
     }
     
     var body: some View {
-        Text(title)
-            .font(.title)
-            .fontWeight(.semibold)
-            .frame(width: 260, height: 50)
-            .foregroundColor(.white)
-            .background(color)
-            .cornerRadius(10)
+        ZStack {
+            if tapped {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(color)
+                Text(title)
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .transition(AnyTransition.opacity.animation(.easeInOut(duration:0.3)))
+            } else {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(color)
+                Text(title)
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .transition(AnyTransition.opacity.animation(.easeInOut(duration:0.3)))
+            }
+        }
+        .frame(width: 260, height: 50)
     }
 }
 

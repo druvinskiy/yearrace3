@@ -16,58 +16,75 @@ struct MainView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                Image("logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 223, height: 123)
                 
-                Text("Welcome to YearRace!")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.top, 30)
+                Spacer()
                 
-                Text("What date do you want to race to?")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.secondary)
-                    .padding(.top, 30)
+                VStack() {
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 223, height: 123)
+                    
+                    Text("Welcome to YearRace!")
+                        .font(.title)
+                        .fontWeight(.bold)
+                }
                 
-                HStack(spacing: 40) {
-                    Button() {
-                        viewModel.setMode(mode: .getjan1)
+                Spacer()
+                
+                VStack(spacing: 20) {
+                
+                    VStack {
                         
-                    } label: {
-                        DateButton(month: "Jan", day: "1", isSelected: viewModel.game.mode == .getjan1)
+                        Text("What date do you want to race to?")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.secondary)
+                        
+                        HStack(spacing: 40) {
+                            Button() {
+                                viewModel.setMode(mode: .getjan1)
+                                
+                            } label: {
+                                DateButton(month: "Jan", day: "1", isSelected: viewModel.game.mode == .getjan1)
+                            }
+                            
+                            Button() {
+                                viewModel.setMode(mode: .getdec31)
+                            } label: {
+                                DateButton(month: "Dec", day: "31", isSelected: viewModel.game.mode == .getdec31)
+                            }
+                        }
                     }
                     
-                    Button() {
-                        viewModel.setMode(mode: .getdec31)
-                    } label: {
-                        DateButton(month: "Dec", day: "31", isSelected: viewModel.game.mode == .getdec31)
+        
+                
+                    VStack {
+
+                        Text("Do you want to go first?")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.secondary)
+                        
+                        HStack(spacing: 40) {
+                            Button() {
+                                viewModel.setFirstPlayer(firstPlayer: .user)
+                            } label: {
+                                FirstPlayerButton(response: "Yes", isSelected: viewModel.game.firstPlayer == .user)
+                            }
+                            
+                            Button() {
+                                viewModel.setFirstPlayer(firstPlayer: .computer)
+                            } label: {
+                                FirstPlayerButton(response: "No", isSelected: viewModel.game.firstPlayer == .computer)
+                            }
+                        }
                     }
                 }
-                .padding()
                 
-                Text("Do you want to go first?")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.secondary)
-                
-                HStack(spacing: 40) {
-                    Button() {
-                        viewModel.setFirstPlayer(firstPlayer: .user)
-                    } label: {
-                        FirstPlayerButton(response: "Yes", isSelected: viewModel.game.firstPlayer == .user)
-                    }
-                    
-                    Button() {
-                        viewModel.setFirstPlayer(firstPlayer: .computer)
-                    } label: {
-                        FirstPlayerButton(response: "No", isSelected: viewModel.game.firstPlayer == .computer)
-                    }
-                }
+                Spacer()
                 
                 Button() {
                     viewModel.isShowingGameView = true
@@ -75,7 +92,8 @@ struct MainView: View {
                     YRButton(title: "Start")
                         .foregroundColor(.black)
                 }
-                .padding(60)
+                
+                Spacer()
             }
         }
         .fullScreenCover(isPresented: $viewModel.isShowingGameView) {
@@ -87,7 +105,9 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
-            .preferredColorScheme(.dark)
+        Group {
+            MainView()
+                .preferredColorScheme(.dark)
+        }
     }
 }

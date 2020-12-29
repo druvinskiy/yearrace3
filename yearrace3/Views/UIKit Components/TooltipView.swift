@@ -24,8 +24,9 @@ final class TooltipView: UIView {
     label = UILabel()
     label.font = invariantViewProperties.font
     label.textAlignment = invariantViewProperties.textAlignment
-    label.lineBreakMode = .byTruncatingTail
+//    label.lineBreakMode = .byTruncatingTail
     label.textColor = invariantViewProperties.textColor
+    label.numberOfLines = 0
 
     super.init(frame: .zero)
 

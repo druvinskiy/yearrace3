@@ -12,6 +12,7 @@ final class GameViewModel: ObservableObject {
     @Published var userSelectedDate: DateComponents?
     @Published var shouldScroll = false
     @Published var result = Result.ok
+    @Published var submitButtonToggle = false
     
     @Published var gameEndMessage = ""
     @Published var submitButtonShouldBeVisible = true
@@ -77,7 +78,7 @@ final class GameViewModel: ObservableObject {
         result = .ok
         mainViewModel.game.chooseDate(userSelectedDate)
         self.userSelectedDate = nil
-        shouldScroll = true
+        shouldScroll = game.currentDate.month != game.lastChosenDate.month
         
         configureWinnerState()
     }

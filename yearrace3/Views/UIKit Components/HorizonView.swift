@@ -13,6 +13,7 @@ struct HorizonView: UIViewRepresentable {
     @Binding var userSelectedDate: DateComponents?
     @Binding var shouldScroll: Bool
     @Binding var result: Result
+    @Binding var submitButtonToggle: Bool
     
     let calendar = Calendar(identifier: .gregorian)
     
@@ -39,6 +40,7 @@ struct HorizonView: UIViewRepresentable {
             let components = DateComponents(month: day.month.month, day: day.day)
             self.userSelectedDate = components
             result = .ok
+            submitButtonToggle.toggle()
             calendarView.setContent(self.makeContent())
         }
         
@@ -132,10 +134,10 @@ struct HorizonView: UIViewRepresentable {
             .withOverlayItemModelProvider(for: overlaidItemLocations) { overlayLayoutContext in
                 CalendarItemModel<TooltipView>(
                     invariantViewProperties: .init(
-                        backgroundColor: .white,
-                        borderColor: .black,
-                        font: UIFont.systemFont(ofSize: 16),
-                        textColor: .black),
+                        backgroundColor: #colorLiteral(red: 0.1339150965, green: 0.1508577265, blue: 0.1809139784, alpha: 1),
+                        borderColor: .lightGray,
+                        font: UIFont.systemFont(ofSize: 18),
+                        textColor: .white),
                     viewModel: .init(
                         frameOfTooltippedItem: overlayLayoutContext.overlaidItemFrame,
                         text: result.rawValue))

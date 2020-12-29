@@ -23,7 +23,7 @@ enum Result : String {
     case ok = ""
     case invalid_bkwds = "You must pick a later date."
     case invalid_fwds = "You must pick an earlier date."
-    case change_both = "You cannot change both the day and the month."
+    case change_both = "You cannot change both\n the day and the month."
     case invalid_date = "This date does not exist."
 }
 
