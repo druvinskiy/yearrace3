@@ -17,13 +17,14 @@ struct GameView: View {
                         userSelectedDate: $viewModel.userSelectedDate,
                         shouldScroll: $viewModel.shouldScroll,
                         result: $viewModel.result,
-                        submitButtonToggle: $viewModel.submitButtonToggle)
+                        submitButtonToggle: $viewModel.submitButtonToggle,
+                        inGameOverState: $viewModel.inGameOverState)
                 .padding([.leading, .trailing])
             
             Spacer(minLength: 10)
             
             VStack(spacing: 20) {
-                if viewModel.submitButtonShouldBeVisible {
+                if !viewModel.inGameOverState {
                     Button() {
                         viewModel.confirmDate()
                     }

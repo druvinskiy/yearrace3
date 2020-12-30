@@ -24,7 +24,7 @@ final class TooltipView: UIView {
     label = UILabel()
     label.font = invariantViewProperties.font
     label.textAlignment = invariantViewProperties.textAlignment
-//    label.lineBreakMode = .byTruncatingTail
+    label.lineBreakMode = .byTruncatingTail
     label.textColor = invariantViewProperties.textColor
     label.numberOfLines = 0
 
@@ -62,11 +62,11 @@ final class TooltipView: UIView {
       width: min(label.bounds.size.width, bounds.width),
       height: label.bounds.size.height)
 
-    let backgroundSize = CGSize(width: labelSize.width + 16, height: labelSize.height + 16)
+    let backgroundSize = CGSize(width: labelSize.width + 24, height: labelSize.height + 24)
 
     let proposedFrame = CGRect(
       x: frameOfTooltippedItem.midX - (backgroundSize.width / 2),
-      y: frameOfTooltippedItem.minY - backgroundSize.height - 4,
+      y: frameOfTooltippedItem.minY - backgroundSize.height - 15,
       width: backgroundSize.width,
       height: backgroundSize.height)
 

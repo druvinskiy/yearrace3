@@ -15,7 +15,7 @@ final class GameViewModel: ObservableObject {
     @Published var submitButtonToggle = false
     
     @Published var gameEndMessage = ""
-    @Published var submitButtonShouldBeVisible = true
+    @Published var inGameOverState = false
     @Published var gameEndColor = Color.brandBad
     
     @Published var timeRemaining = 0
@@ -88,6 +88,6 @@ final class GameViewModel: ObservableObject {
         
         gameEndMessage = winner == .user ? WonLostMessage.won.rawValue : WonLostMessage.lost.rawValue
         gameEndColor = winner == .user ? .brandGood : .brandBad
-        submitButtonShouldBeVisible = false
+        inGameOverState = true
     }
 }

@@ -15,6 +15,7 @@ struct HorizonView: UIViewRepresentable {
     @Binding var result: Result
     @Binding var submitButtonToggle: Bool
     
+    @Binding var inGameOverState: Bool
     let calendar = Calendar(identifier: .gregorian)
     
     let dateFormatter: DateFormatter = {
@@ -36,6 +37,8 @@ struct HorizonView: UIViewRepresentable {
         
         
         calendarView.daySelectionHandler = { day in
+            
+            guard !inGameOverState else { return }
             
             let components = DateComponents(month: day.month.month, day: day.day)
             self.userSelectedDate = components
@@ -136,7 +139,7 @@ struct HorizonView: UIViewRepresentable {
                     invariantViewProperties: .init(
                         backgroundColor: #colorLiteral(red: 0.1339150965, green: 0.1508577265, blue: 0.1809139784, alpha: 1),
                         borderColor: .lightGray,
-                        font: UIFont.systemFont(ofSize: 18),
+                        font: UIFont.systemFont(ofSize: 14),
                         textColor: .white),
                     viewModel: .init(
                         frameOfTooltippedItem: overlayLayoutContext.overlaidItemFrame,
