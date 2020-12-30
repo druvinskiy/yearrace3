@@ -25,6 +25,13 @@
 		B88124CD25887B4700FC59AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88124CC25887B4700FC59AF /* Assets.xcassets */; };
 		B88124D025887B4700FC59AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88124CF25887B4700FC59AF /* Preview Assets.xcassets */; };
 		B8AD389F258AF69000F112C5 /* DateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD389E258AF69000F112C5 /* DateButton.swift */; };
+		B8F77660259C3F2500CC0C72 /* QuestionMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7765F259C3F2500CC0C72 /* QuestionMarkButton.swift */; };
+		B8F77663259C400100CC0C72 /* ModeFirstPlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F77662259C400100CC0C72 /* ModeFirstPlayerControls.swift */; };
+		B8F7766E259C425600CC0C72 /* OnboardingScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F77667259C425500CC0C72 /* OnboardingScreens.swift */; };
+		B8F77670259C425600CC0C72 /* OnboardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F77669259C425500CC0C72 /* OnboardCard.swift */; };
+		B8F77671259C425600CC0C72 /* OnboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7766A259C425500CC0C72 /* OnboardData.swift */; };
+		B8F77673259C425600CC0C72 /* OBCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7766C259C425600CC0C72 /* OBCardView.swift */; };
+		B8F77674259C425600CC0C72 /* OnboardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7766D259C425600CC0C72 /* OnboardSet.swift */; };
 		B8FB9FEF259567FE00D2A450 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB9FEE259567FE00D2A450 /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +58,13 @@
 		B88124CF25887B4700FC59AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B88124D125887B4700FC59AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8AD389E258AF69000F112C5 /* DateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateButton.swift; sourceTree = "<group>"; };
+		B8F7765F259C3F2500CC0C72 /* QuestionMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionMarkButton.swift; sourceTree = "<group>"; };
+		B8F77662259C400100CC0C72 /* ModeFirstPlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeFirstPlayerControls.swift; sourceTree = "<group>"; };
+		B8F77667259C425500CC0C72 /* OnboardingScreens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingScreens.swift; sourceTree = "<group>"; };
+		B8F77669259C425500CC0C72 /* OnboardCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardCard.swift; sourceTree = "<group>"; };
+		B8F7766A259C425500CC0C72 /* OnboardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardData.swift; sourceTree = "<group>"; };
+		B8F7766C259C425600CC0C72 /* OBCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBCardView.swift; sourceTree = "<group>"; };
+		B8F7766D259C425600CC0C72 /* OnboardSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardSet.swift; sourceTree = "<group>"; };
 		B8FB9FEE259567FE00D2A450 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +148,7 @@
 			children = (
 				B8138A8E2590416A00BEFC85 /* UIKit Components */,
 				B865791D259032E5006C3849 /* Buttons */,
+				B8F77662259C400100CC0C72 /* ModeFirstPlayerControls.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,6 +159,7 @@
 				B8AD389E258AF69000F112C5 /* DateButton.swift */,
 				B83A107C258F0BB6007EE52F /* FirstPlayerButton.swift */,
 				B8138A862590361F00BEFC85 /* YRButton.swift */,
+				B8F7765F259C3F2500CC0C72 /* QuestionMarkButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -151,6 +167,7 @@
 		B865791E25903310006C3849 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B8F77666259C423D00CC0C72 /* Onboarding */,
 				B8FB9FEC259567E100D2A450 /* GameView */,
 				B83A391A2593D4630006C2E7 /* MainView */,
 			);
@@ -196,6 +213,18 @@
 				B88124CF25887B4700FC59AF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B8F77666259C423D00CC0C72 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B8F7766C259C425600CC0C72 /* OBCardView.swift */,
+				B8F77669259C425500CC0C72 /* OnboardCard.swift */,
+				B8F7766A259C425500CC0C72 /* OnboardData.swift */,
+				B8F77667259C425500CC0C72 /* OnboardingScreens.swift */,
+				B8F7766D259C425600CC0C72 /* OnboardSet.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		B8FB9FEC259567E100D2A450 /* GameView */ = {
@@ -321,16 +350,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8138A872590361F00BEFC85 /* YRButton.swift in Sources */,
+				B8F77673259C425600CC0C72 /* OBCardView.swift in Sources */,
 				B83A39152593C3320006C2E7 /* DateComponents+Ext.swift in Sources */,
+				B8F77670259C425600CC0C72 /* OnboardCard.swift in Sources */,
+				B8F77671259C425600CC0C72 /* OnboardData.swift in Sources */,
 				B8676890259943C400167C32 /* TooltipView.swift in Sources */,
 				B8138A902590418E00BEFC85 /* HorizonView.swift in Sources */,
+				B8F77660259C3F2500CC0C72 /* QuestionMarkButton.swift in Sources */,
 				B8FB9FEF259567FE00D2A450 /* GameViewModel.swift in Sources */,
 				B88124CB25887B4400FC59AF /* MainView.swift in Sources */,
 				B83A38FB2592E3100006C2E7 /* MonthLabel.swift in Sources */,
+				B8F77663259C400100CC0C72 /* ModeFirstPlayerControls.swift in Sources */,
 				B812107D259199780010E13C /* UIView+Layout.swift in Sources */,
 				B8138A94259043DC00BEFC85 /* GameView.swift in Sources */,
 				B83A391D2593D48B0006C2E7 /* MainViewModel.swift in Sources */,
+				B8F7766E259C425600CC0C72 /* OnboardingScreens.swift in Sources */,
 				B88124C925887B4400FC59AF /* yearrace3App.swift in Sources */,
+				B8F77674259C425600CC0C72 /* OnboardSet.swift in Sources */,
 				B83A39022592E41B0006C2E7 /* Game.swift in Sources */,
 				B8AD389F258AF69000F112C5 /* DateButton.swift in Sources */,
 				B83A107D258F0BB6007EE52F /* FirstPlayerButton.swift in Sources */,

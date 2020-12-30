@@ -9,96 +9,68 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel = MainViewModel()
+    @State private var showOnBoarding = false
+    @AppStorage("OnboardBeenViewed") var hasOnboarded = false
+    var onboardSet = OnboardData.buildSet(height: 550)
     
     var body: some View {
         ZStack {
-            Color(.systemBackground)
-                .edgesIgnoringSafeArea(.all)
             
-            VStack {
+            ZStack {
+                QuestionMarkButton(showOnBoarding: $showOnBoarding)
                 
-                Spacer()
-                
-                VStack() {
-                    Image("logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 223, height: 123)
+                VStack {
+                    Spacer()
                     
-                    Text("Welcome to YearRace!")
-                        .font(.title)
-                        .fontWeight(.bold)
-                }
-                
-                Spacer()
-                
-                VStack(spacing: 20) {
-                
-                    VStack {
+                    VStack() {
+                        Image("logo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 223, height: 123)
                         
-                        Text("What date do you want to race to?")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.secondary)
-                        
-                        HStack(spacing: 40) {
-                            Button() {
-                                viewModel.setMode(mode: .getjan1)
-                                
-                            } label: {
-                                DateButton(month: "Jan", day: "1", isSelected: viewModel.game.mode == .getjan1)
-                            }
-                            
-                            Button() {
-                                viewModel.setMode(mode: .getdec31)
-                            } label: {
-                                DateButton(month: "Dec", day: "31", isSelected: viewModel.game.mode == .getdec31)
-                            }
-                        }
+                        Text("Welcome to YearRace!")
+                            .font(.title)
+                            .fontWeight(.bold)
                     }
                     
-        
-                
-                    VStack {
-
-                        Text("Do you want to go first?")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.secondary)
-                        
-                        HStack(spacing: 40) {
-                            Button() {
-                                viewModel.setFirstPlayer(firstPlayer: .user)
-                            } label: {
-                                FirstPlayerButton(response: "Yes", isSelected: viewModel.game.firstPlayer == .user)
-                            }
-                            
-                            Button() {
-                                viewModel.setFirstPlayer(firstPlayer: .computer)
-                            } label: {
-                                FirstPlayerButton(response: "No", isSelected: viewModel.game.firstPlayer == .computer)
-                            }
-                        }
+                    Spacer()
+                    
+                    ModeFirstPlayerControls(viewModel: viewModel)
+                    
+                    Spacer()
+                    
+                    Button() {
+                        viewModel.isShowingGameView = true
+                    } label: {
+                        YRButton(title: "Start")
                     }
+                    
+                    Spacer()
                 }
                 
-                Spacer()
-                
-                Button() {
-                    viewModel.isShowingGameView = true
-                } label: {
-                    YRButton(title: "Start")
-                        .foregroundColor(.black)
-                }
-                
-                Spacer()
+            }
+            .disabled(showOnBoarding)
+            .blur(radius: showOnBoarding ? /*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/ : 0)
+            
+            if showOnBoarding {
+                OnboardingScreens(isPresenting: $showOnBoarding, onboardSet: onboardSet)
             }
         }
         .fullScreenCover(isPresented: $viewModel.isShowingGameView) {
             let gameViewModel = GameViewModel(mainViewModel: viewModel)
             GameView(viewModel: gameViewModel)
+        }
+        
+        .onAppear {
+//            hasOnboarded = false // only here for testing
+            if !hasOnboarded {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    withAnimation {
+                        showOnBoarding.toggle()
+                        hasOnboarded = true
+                    }
+                }
+            }
         }
     }
 }
