@@ -50,7 +50,7 @@ struct MainView: View {
                 
             }
             .disabled(showOnBoarding)
-            .blur(radius: showOnBoarding ? /*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/ : 0)
+            .blur(radius: showOnBoarding ? 3.0 : 0)
             
             if showOnBoarding {
                 OnboardingScreens(isPresenting: $showOnBoarding, onboardSet: onboardSet)
