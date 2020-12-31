@@ -36,7 +36,7 @@ struct OBCardView: View {
                 .frame(width: 223, height: 123)
             
             Text(card.text)
-                .font(.title3)
+                .font(.body)
                 .padding(.top)
             
             Spacer()

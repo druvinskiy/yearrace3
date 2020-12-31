@@ -18,13 +18,13 @@ struct GameView: View {
                         shouldScroll: $viewModel.shouldScroll,
                         result: $viewModel.result,
                         submitButtonToggle: $viewModel.submitButtonToggle,
-                        inGameOverState: $viewModel.inGameOverState)
+                        inGameOverState: $viewModel.isGameOverState)
                 .padding([.leading, .trailing])
             
             Spacer(minLength: 10)
             
             VStack(spacing: 20) {
-                if !viewModel.inGameOverState {
+                if !viewModel.isGameOverState {
                     Button() {
                         viewModel.confirmDate()
                     }
@@ -43,7 +43,7 @@ struct GameView: View {
                 Button() {
                     viewModel.resetGame()
                 } label: {
-                    Text("Go Back")
+                    Text(viewModel.isGameOverState ? "Play Again" : "Go Back")
                         .font(.title3)
                         .foregroundColor(.secondary)
                 }

@@ -14,7 +14,7 @@ struct ModeFirstPlayerControls: View {
         VStack(spacing: 20) {
             VStack {
                 Text("What date do you want to race to?")
-                    .font(.title2)
+                    .font(.title3)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
@@ -37,7 +37,7 @@ struct ModeFirstPlayerControls: View {
             
             VStack {
                 Text("Do you want to go first?")
-                    .font(.title2)
+                    .font(.title3)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
