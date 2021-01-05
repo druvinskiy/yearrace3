@@ -117,6 +117,13 @@ class GetDec31: Game {
         return Result.ok
     }
     
+    private func generateRandomDate() -> DateComponents {
+        let randomMonth = Int.random(in: currentDate.month!...12)
+        let randomDay = Int.random(in: currentDate.day!...30)
+        
+        return DateComponents(month: randomMonth, day: randomDay)
+    }
+    
     override func makeMove() {
         // Pole position rule: day - month = 19
         let poleSameMonth = DateComponents(month: currentDate.month, day: currentDate.month! + 19)
@@ -124,8 +131,16 @@ class GetDec31: Game {
 
         if currentDate > poleSameMonth {
             currentDate = poleSameDay
-        } else if currentDate == poleSameMonth{
-            currentDate = DateComponents(month: poleSameMonth.month! + 1, day: poleSameMonth.day)
+        } else if currentDate == poleSameMonth {
+            var randomDate = generateRandomDate()
+            
+            while !isValidDate(date: randomDate) {
+                randomDate = generateRandomDate()
+            }
+            
+            currentDate = randomDate
+            
+//            currentDate = DateComponents(month: poleSameMonth.month! + 1, day: poleSameMonth.day)
         } else {
             currentDate = poleSameMonth
         }
@@ -165,6 +180,13 @@ class GetJan1: Game {
 
         return Result.ok
     }
+    
+    private func generateRandomDate() -> DateComponents {
+        let randomMonth = Int.random(in: 1...currentDate.month!)
+        let randomDay = Int.random(in: 1...currentDate.day!)
+        
+        return DateComponents(month: randomMonth, day: randomDay)
+    }
 
     override func makeMove() {
         // Pole position rule: day == month
@@ -173,8 +195,16 @@ class GetJan1: Game {
 
         if currentDate > poleSameMonth {
             currentDate = poleSameMonth
-        } else if currentDate == poleSameMonth{
-            currentDate = DateComponents(month: poleSameMonth.month! - 1, day: poleSameMonth.day)
+        } else if currentDate == poleSameMonth {
+            var randomDate = generateRandomDate()
+            
+            while !isValidDate(date: randomDate) {
+                randomDate = generateRandomDate()
+            }
+            
+            currentDate = randomDate
+            
+//            currentDate = DateComponents(month: poleSameMonth.month! - 1, day: poleSameMonth.day)
         } else {
             currentDate = poleSameDay
         }
